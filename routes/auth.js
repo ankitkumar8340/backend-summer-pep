@@ -7,7 +7,7 @@ const requireAuth = require('../middleware/auth');
 
 
 
-const router = XPathExpression.Router();
+const router = express.Router();
 function signToken(userId){
     return jwt.sign({id: userId}, process.env.JWT_SECRET, {expiresIn: "7d"});
 }
