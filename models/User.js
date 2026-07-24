@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required: [true, "Name is required"],
-        trim : true, maxLength: 60
+        trim : true, maxlength: 60
     },
 
     email:{
@@ -14,13 +14,13 @@ const userSchema = new mongoose.Schema({
         unique:true,
         lowercase:true,
         trim:true,
-        match:[/^\S+@\S+\.S+$/, "Enter a valid Email"] 
+        match:[/^\S+@\S+\.\S+$/, "Enter a valid Email"] 
     },
 
     password:{
         type:String,
         required:[true, "Password is required"],
-        minLength:6,
+        minlength:6,
         select:false
     },
 },
@@ -28,16 +28,17 @@ const userSchema = new mongoose.Schema({
 
 )
 
-userSchema.pre("Save ", async function hashPassword(next){
-    if(!this.isModifies("password")){
+userSchema.pre("save", async function hashPassword(next){
+    if(!this.isModified("password")){
         return next();
     }
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
+    next();
 });
 
 userSchema.methods.comparePassword = function comparePassword(candidate){
-    return bcrypt.compare(candidate, this.passsword);
+    return bcrypt.compare(candidate, this.password);
 }
 
 module.exports = mongoose.model("User", userSchema);
