@@ -56,6 +56,8 @@ router.get('/nearby', requireAuth, async(req, res)=>{
     }catch(error){
         res.status(502).json({message: "Could not find nearby places right now."})
     }
+
+    
 })
 
 
