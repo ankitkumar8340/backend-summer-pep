@@ -42,6 +42,7 @@ function normalizeElement(el, category, originLat, originLon){
     }
 }
 
+//working for nearby button fecthing things according to location
 router.get('/nearby', requireAuth, async(req, res)=>{
     try{
         const {lat, lon, category, radius =1500} = req.query;
@@ -59,7 +60,7 @@ router.get('/nearby', requireAuth, async(req, res)=>{
 
 
 
-    
+
 
 })
 
