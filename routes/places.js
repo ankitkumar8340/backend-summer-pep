@@ -20,6 +20,7 @@ function handlers(){
     return {"User-Agent":process.env.USER_AGENT || "GeoExplorer/1.0"};
 }
 
+//calculating latitude and logitude
 function haversineDistanceMeters(lat1, lon1, lat2, lon2 ){
     const R = 6371000;
     const toRad = (deg) => (deg* Math.PI) /100;
