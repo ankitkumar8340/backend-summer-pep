@@ -8,6 +8,7 @@ const router = express.Router();
 const OVERPASS_URI = 'https://overpass-api.de/interpreter';
 const NOMINATIM_URI = 'https://nominatin.openstreetmap.org';
 
+//locations can be fetched
 const CATEGORY_TAGS = {
     restaurants:'amenity="restaurant"',
     hospitals:'amenity="hospital"',
